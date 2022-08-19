@@ -1,0 +1,6 @@
+.card-image {
+  &:hover {
+    opacity: 0.9;
+    filter: alpha(opacity=100);
+  }
+}
