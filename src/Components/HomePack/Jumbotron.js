@@ -33,9 +33,9 @@ const Jumbotron = () => {
   return (
     <div className="mt-3">
       <Carousel activeIndex={index} onSelect={handleSelect}>
-        {allFilm.map((item) => {
+        {allFilm.map((item, idx) => {
           return (
-            <Carousel.Item>
+            <Carousel.Item key={idx}>
               <img
                 className="d-block w-100"
                 src={imageUrl + item.image}

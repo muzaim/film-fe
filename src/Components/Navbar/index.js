@@ -9,7 +9,7 @@ import Form from "react-bootstrap/Form";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const NavigationBar = () => {
+const NavigationBar = ({ logOutCallback }) => {
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container>
@@ -36,6 +36,9 @@ const NavigationBar = () => {
           </Form>
           <Nav>
             <Nav.Link href="/login">Login</Nav.Link>
+          </Nav>
+          <Nav>
+            <Button onClick={logOutCallback}>Logout</Button>
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import { UserContext } from "../../App";
 const Login = () => {
   const Navigate = useNavigate();
+  const [user, setUser] = useContext(UserContext);
   const [token, setToken] = useState("");
   const [dataLogin, setDataLogin] = useState({
     email: "",
@@ -16,32 +17,32 @@ const Login = () => {
     setDataLogin({ ...dataLogin, [e.target.name]: e.target.value });
   };
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("email", dataLogin.email);
     formData.append("password", dataLogin.password);
 
-    Axios.post(`${process.env.REACT_APP_BASEURL}/user/login`, formData)
+    Axios.post(`${process.env.REACT_APP_BASEURL}/user/login`, formData, {
+      credentials: true,
+    })
       .then((result) => {
-        console.log(result.data);
-        localStorage.setItem("token", result.data.OUT_TOKEN);
-        setToken(result.data.OUT_TOKEN);
-        if (result.data.OUT_TOKEN) {
-          Navigate("/");
-        }
+        setUser({
+          accessToken: result.data.accessToken,
+          email: result.data.email,
+        });
+        localStorage.setItem("user", JSON.stringify(result.data));
+        alert("berhasil login");
+        Navigate("/");
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.response.data.message);
       });
   };
-  const isLogin = () => {
-    const token = localStorage.getItem("token");
-    if (token) return Navigate("/");
-  };
+
   useEffect(() => {
-    isLogin();
-  }, []);
+    console.log(`user`, user);
+  }, [user]);
 
   return (
     <React.Fragment>

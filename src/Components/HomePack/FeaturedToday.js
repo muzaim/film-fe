@@ -44,7 +44,9 @@ const FeaturedToday = () => {
 
       <div className="d-flex flex-row flex-nowrap overflow-auto">
         {allFilm.map((film) => {
-          return <CardImage {...film} detailHandler={detailHandler} />;
+          return (
+            <CardImage {...film} detailHandler={detailHandler} key={film._id} />
+          );
         })}
       </div>
     </div>

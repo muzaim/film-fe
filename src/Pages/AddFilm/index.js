@@ -50,108 +50,101 @@ const AddFilm = () => {
       });
   };
 
-  const addfilm = () => {
-    return (
-      <React.Fragment>
-        <div className="d-flex justify-content-center">
-          <Form
-            className="my-4 col-md-5"
-            onSubmit={submitHandler}
-            encType="multipart/form-data"
-          >
-            <Form.Group className="mb-3">
-              <Form.Label>Title</Form.Label>
-              <Form.Control
-                required
-                type="text"
-                name="title"
-                id="title"
-                placeholder="Enter title"
-                onChange={handleChange}
-              />
-              <Form.Control.Feedback type="invalid">
-                Please provide a valid city.
-              </Form.Control.Feedback>
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Image</Form.Label>
-              {imagePreview && (
-                <Figure>
-                  <Figure.Image width={171} height={180} src={imagePreview} />
-                </Figure>
-              )}
-              <Form.Control
-                type="file"
-                accept=".png, .jpg, .jpeg"
-                name="image"
-                id="image"
-                onChange={handleImage}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Director</Form.Label>
-              <Form.Control
-                type="text"
-                name="director"
-                id="director"
-                placeholder="Enter Director"
-                onChange={handleChange}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Cast</Form.Label>
-              <Form.Control
-                type="text"
-                name="cast"
-                id="cast"
-                placeholder="Enter Cast"
-                onChange={handleChange}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Genre</Form.Label>
-              <Form.Control
-                type="text"
-                name="genre"
-                id="genre"
-                placeholder="Enter Genre"
-                onChange={handleChange}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Duration</Form.Label>
-              <Form.Control
-                type="text"
-                name="duration"
-                id="duration"
-                placeholder="Enter Duration"
-                onChange={handleChange}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Synopsis</Form.Label>
-              <Form.Control
-                as="textarea"
-                type="text"
-                name="synopsis"
-                id="synopsis"
-                placeholder="Enter Synopsis"
-                onChange={handleChange}
-              />
-            </Form.Group>
-            <Button variant="primary" type="submit">
-              Submit
-            </Button>
-          </Form>
-        </div>
-      </React.Fragment>
-    );
-  };
-  if (localStorage.getItem("token")) {
-    return <>{addfilm()}</>;
-  } else {
-    return Navigate("/");
-  }
+  return (
+    <React.Fragment>
+      <div className="d-flex justify-content-center">
+        <Form
+          className="my-4 col-md-5"
+          onSubmit={submitHandler}
+          encType="multipart/form-data"
+        >
+          <Form.Group className="mb-3">
+            <Form.Label>Title</Form.Label>
+            <Form.Control
+              required
+              type="text"
+              name="title"
+              id="title"
+              placeholder="Enter title"
+              onChange={handleChange}
+            />
+            <Form.Control.Feedback type="invalid">
+              Please provide a valid city.
+            </Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Image</Form.Label>
+            {imagePreview && (
+              <Figure>
+                <Figure.Image width={171} height={180} src={imagePreview} />
+              </Figure>
+            )}
+            <Form.Control
+              type="file"
+              accept=".png, .jpg, .jpeg"
+              name="image"
+              id="image"
+              onChange={handleImage}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Director</Form.Label>
+            <Form.Control
+              type="text"
+              name="director"
+              id="director"
+              placeholder="Enter Director"
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Cast</Form.Label>
+            <Form.Control
+              type="text"
+              name="cast"
+              id="cast"
+              placeholder="Enter Cast"
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Genre</Form.Label>
+            <Form.Control
+              type="text"
+              name="genre"
+              id="genre"
+              placeholder="Enter Genre"
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Duration</Form.Label>
+            <Form.Control
+              type="text"
+              name="duration"
+              id="duration"
+              placeholder="Enter Duration"
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Synopsis</Form.Label>
+            <Form.Control
+              as="textarea"
+              type="text"
+              name="synopsis"
+              id="synopsis"
+              placeholder="Enter Synopsis"
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+        </Form>
+      </div>
+    </React.Fragment>
+  );
 };
 
 export default AddFilm;
